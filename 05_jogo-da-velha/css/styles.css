@@ -1,0 +1,150 @@
+/* Título e Container Pai */
+
+#titulo_do_jogo {
+    text-align: center;
+    font-family: Helvetica, sans-serif;
+}
+
+h1 {
+    border: 0.2vw solid #333;
+    border-radius: 2vw;
+    padding: 1em 4vw;
+    display: inline-block;
+    background: lightblue;
+    margin: 2em auto;
+    font-size: 3em;
+}
+
+/* Botões */
+
+#botao_dois_jogadores,
+#botao_contra_ia {
+    border-radius: 1vw;
+    padding: 0.2em;
+    display: inline-block;
+    margin: 0.7vh 1vw;
+    width: 10vw;
+    font-size: 1.3vw;
+    vertical-align: middle;
+}
+
+#botao_dois_jogadores:hover,
+#botao_contra_ia:hover {
+    background: rgb(177, 206, 135);
+    cursor: pointer;
+}
+
+/* Jogo */
+
+#campo-container {
+    display: flex;
+    width: 27vh;
+    margin: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.box {
+    height: 9vh;
+    width: 9vh;
+    border: 0.5vh solid #000;
+    box-sizing: border-box;
+    flex: 1 1 33%;
+}
+
+#block-1,
+#block-2,
+#block-3 {
+    border-top: none;
+}
+
+#block-1,
+#block-4,
+#block-7 {
+    border-left: none;
+}
+
+#block-7,
+#block-8,
+#block-9 {
+    border-bottom: none;
+}
+
+#block-3,
+#block-6,
+#block-9 {
+    border-right: none;
+}
+
+/* Símbolos */
+.x {
+    font-size: 7vh;
+    color: red;
+    display: inline-block;
+    line-height: 9vh;
+}
+
+.o {
+    width: 4.5vh;
+    height: 4.5vh;
+    border: 0.45vh solid green;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 1.89vh;
+}
+
+/* Hide */
+/* .hide {
+    display: none !important;
+} */
+
+/* Placar */
+#scoreboard-container {
+    font-weight: bold;
+    margin-top: 30px;
+    font-size: 2.25vh;
+    position: relative;
+    margin-left: auto;
+    margin-top: auto;
+}
+
+.score-box {
+    margin: 0 2.25vh;
+}
+
+#x-scoreboard {
+    color: red;
+    margin-right: 0.27vh;
+}
+
+#o-scoreboard {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 0.18vh solid green;
+    border-radius: 50%;
+    margin-right: 0.27vh;
+}
+
+/* Msg de Vitória */
+#message {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 40vw;           /* Proporcional à largura da tela */
+    text-align: center;
+}
+
+#message p {
+    background-color: #000;
+    color: white;
+    font-size: 3vw;        /* Proporcional à largura da tela */
+    padding: 2vw;          /* Proporcional à largura da tela */
+    margin: 0;
+    border-radius: 1vw;
+    display: none;
+}
