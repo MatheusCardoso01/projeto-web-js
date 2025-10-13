@@ -26,6 +26,13 @@ buttons.forEach(button => {
         if (jogoFinalizado) {
             limparTabuleiro();
         }
+
+        secondPlayer = this.getAttribute("id");
+
+        buttons.forEach(button => {
+            button.style.display = 'none';
+        });
+
         document.querySelector('#campo-container').classList.remove('hide');
     });
 });
@@ -53,17 +60,41 @@ function validarJogada(boxEscolhida, el, i) {
         let cloneEl = el.cloneNode(true);
         boxEscolhida.appendChild(cloneEl);
 
-        if (player1 == player2) {
+        if (secondPlayer == 'botao_dois_jogadores') {
+
+            if (player1 == player2) {
+                player1++;
+                jogador = "x";
+                
+            } else {
+                player2++;
+                jogador = "o";                
+            }
+            
+            preencherMatriz(i);
+    
+            verificarSeAlguemGanhou();
+
+        } else {
+            //Player
             player1++;
             jogador = "x";
-        } else {
-            player2++;
-            jogador = "o";
+
+            preencherMatriz(i);
+    
+            let acabou = verificarSeAlguemGanhou();
+            
+            if (!acabou) {
+                //IA
+                i = computerPlay();
+                player2++;
+                jogador = "o";
+    
+                preencherMatriz(i);
+        
+                verificarSeAlguemGanhou();
+            }
         }
-
-        preencherMatriz(i);
-
-        verificarSeAlguemGanhou();
 
     }
 }
@@ -74,28 +105,29 @@ function verificarSeAlguemGanhou() {
         if (matrizDeVerificacao[i][0] == matrizDeVerificacao[i][1] && matrizDeVerificacao[i][1] == matrizDeVerificacao[i][2] && matrizDeVerificacao[i][0] != null) {
             let resultado = "Ganhou";
             imprimirResultado(resultado);
-            return;
+            return true;
         };
 
         if (matrizDeVerificacao[0][i] == matrizDeVerificacao[1][i] && matrizDeVerificacao[1][i] == matrizDeVerificacao[2][i] && matrizDeVerificacao[0][i] != null) {
             let resultado = "Ganhou";
             imprimirResultado(resultado);
-            return;
+            return true;
         };
     }
 
     if (matrizDeVerificacao[0][0] == matrizDeVerificacao[1][1] && matrizDeVerificacao[1][1] == matrizDeVerificacao[2][2] && matrizDeVerificacao[0][0] != null) {
         let resultado = "Ganhou";
         imprimirResultado(resultado);
-        return;
+        return true;
     } else if (matrizDeVerificacao[2][0] == matrizDeVerificacao[1][1] && matrizDeVerificacao[1][1] == matrizDeVerificacao[0][2] && matrizDeVerificacao[2][0] != null) {
         let resultado = "Ganhou";
         imprimirResultado(resultado);
-        return;
+        return true;
     }
 
-    verificarSeDeuVelha();
+    let acabou = verificarSeDeuVelha();
 
+    return acabou;
 }
 
 function imprimirResultado(resultado) {
@@ -110,6 +142,7 @@ function imprimirResultado(resultado) {
         message.classList.remove('hide');
 
         atualizarPlacar();
+        reativarBotoes();
         jogoFinalizado = true;
 
         return;
@@ -119,14 +152,18 @@ function imprimirResultado(resultado) {
     message.classList.remove('hide');
 
     jogoFinalizado = true;
+    reativarBotoes();
+
 }
 
 function verificarSeDeuVelha() {
     if (player1 + player2 == 9) {
         let resultado = "Velha";
         imprimirResultado(resultado);
-    }
 
+        return true;
+    }
+    return false;
 }
 
 function atualizarPlacar() {
@@ -145,6 +182,8 @@ function limparTabuleiro() {
     message.classList.add('hide');
     player1 = 0;
     player2 = 0;
+
+    messageText.style.backgroundColor = '#000000ff';
 
     boxes.forEach(box => {
         box.innerHTML = "";
@@ -166,6 +205,33 @@ function identificarJogador() {
 
 }
 
+function computerPlay() {
+    let cloneO = o.cloneNode(true);
+    let counter = 0;
+    let filled = 0;
+    //Só preencher se estiver com nó filho vazio
+    for (let i = 0; i < boxes.length; i++) {
+        let numAleatorio = Math.floor(Math.random() * 5);
+
+        if (boxes[i].childNodes[0] == undefined) {
+            if (numAleatorio <= 1) {
+                boxes[i].appendChild(cloneO);
+                counter++;
+
+                return i;
+            }
+        } else {
+            filled++;
+        }
+    }
+    //Checagem de quantas estão preenchidas
+    if (counter == 0 && filled < 9) {
+        i = computerPlay();
+
+        return i;
+    }
+}
+
 function preencherMatriz(i) {
     if (i < 3) {
         matrizDeVerificacao[0][i] = jogador;
@@ -174,4 +240,10 @@ function preencherMatriz(i) {
     } else {
         matrizDeVerificacao[2][i - 6] = jogador;
     }
+}
+
+function reativarBotoes() {
+    buttons.forEach(button => {
+        button.style.display = 'inline-block';
+    });
 }
