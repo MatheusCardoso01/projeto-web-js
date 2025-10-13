@@ -96,9 +96,9 @@ h1 {
 }
 
 /* Hide */
-/* .hide {
+.hide {
     display: none !important;
-} */
+}
 
 /* Placar */
 #scoreboard-container {
@@ -115,15 +115,20 @@ h1 {
 }
 
 #x-scoreboard {
+    font-size: 25px; /* igual ao .o */
+    width: 18px;
+    height: 18px;
     color: red;
-    margin-right: 0.27vh;
+    display: inline-block;
+    text-align: center;
+    line-height: 4.5vh;
 }
 
 #o-scoreboard {
     display: inline-block;
     width: 18px;
     height: 18px;
-    border: 0.18vh solid green;
+    border: 0.20vh solid green;
     border-radius: 50%;
     margin-right: 0.27vh;
 }
@@ -146,5 +151,4 @@ h1 {
     padding: 2vw;          /* Proporcional à largura da tela */
     margin: 0;
     border-radius: 1vw;
-    display: none;
 }
