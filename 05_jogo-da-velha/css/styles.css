@@ -135,19 +135,20 @@ h1 {
 
 /* Msg de Vitória */
 #message {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-    width: 40vw;           /* Proporcional à largura da tela */
+    position: static; /* ou relative */
+    width: 40vw;
+    margin: 2em auto 0 auto; /* centraliza abaixo do placar */
     text-align: center;
+    z-index: 1000; /* pode remover se não houver sobreposição */
+    left: unset;
+    top: unset;
+    transform: unset;
 }
 
 #message p {
-    background-color: #000;
+    background-color: #000000;
     color: white;
-    font-size: 3vw;        /* Proporcional à largura da tela */
+    font-size: clamp(1.5em, 3vw, 2.5em);       /* Proporcional à largura da tela */
     padding: 2vw;          /* Proporcional à largura da tela */
     margin: 0;
     border-radius: 1vw;

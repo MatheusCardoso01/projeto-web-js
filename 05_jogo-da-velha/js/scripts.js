@@ -100,6 +100,12 @@ function verificarSeAlguemGanhou() {
 
 function imprimirResultado(resultado) {
     if (resultado == 'Ganhou') {
+        if (jogador == 'x') {
+            messageText.style.backgroundColor = '#b10f0fff';
+        } else {
+            messageText.style.backgroundColor = '#2ea865';
+        }
+
         messageText.textContent = 'O jogador ' + jogador.toUpperCase() + ' venceu!!!';
         message.classList.remove('hide');
 
