@@ -1,0 +1,29 @@
+{
+  "name": "projeto-web",
+  "version": "1.0.0",
+  "description": "Projeto de um site de que exibe vagas de emprego de TI",
+  "keywords": [
+    "emprego",
+    "TI",
+    "vagas",
+    "nodejs",
+    "mysql"
+  ],
+  "license": "ISC",
+  "author": "Matheus Cardoso",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.3",
+    "mysql2": "^3.15.2",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
