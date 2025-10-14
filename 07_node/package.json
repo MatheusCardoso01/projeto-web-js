@@ -1,0 +1,23 @@
+{
+  "name": "07_node",
+  "version": "1.0.0",
+  "description": "Projeto com Node",
+  "homepage": "https://github.com/MatheusCardoso01/projeto-web-js#readme",
+  "bugs": {
+    "url": "https://github.com/MatheusCardoso01/projeto-web-js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatheusCardoso01/projeto-web-js.git"
+  },
+  "license": "ISC",
+  "author": "Matheus Cardoso",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
